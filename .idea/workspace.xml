@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d720ba86-ac14-4844-93cc-f095e5f040f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/communes/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/communes/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/communes/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/communes/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +40,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602228172706</updated>
-      <workItem from="1602228173769" duration="1988000" />
+      <workItem from="1602228173769" duration="3335000" />
     </task>
     <servers />
   </component>
