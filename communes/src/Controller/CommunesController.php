@@ -153,7 +153,7 @@ class CommunesController extends AbstractController
     }
 
     /**
-     * @Route("/communes/json/delete", name="communes_delete", methods={"DELETE"})
+     * @Route("/api/communes/json/delete", name="communes_delete", methods={"DELETE"})
      * @param Request $request
      * @param CommunesRepository $communesRepository
      * @return Response

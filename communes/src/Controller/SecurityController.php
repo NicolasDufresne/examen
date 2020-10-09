@@ -17,7 +17,7 @@ class SecurityController extends AbstractController
         $user = $this->getUser();
 
         return new JsonResponse([
-            'email' => $user->getEmail(),
+            'email' => $user->getUsername(),
             'roles' => $user->getRoles(),
         ]);
     }

@@ -3,14 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d720ba86-ac14-4844-93cc-f095e5f040f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/.env" beforeDir="false" afterPath="$PROJECT_DIR$/communes/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/communes/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/communes/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/communes/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/communes/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/communes/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/communes/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/communes/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/communes/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/communes/src/Controller/CommunesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/communes/src/Controller/CommunesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/communes/src/DataFixtures/CommunesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/communes/src/DataFixtures/CommunesFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/communes/src/Entity/Communes.php" beforeDir="false" afterPath="$PROJECT_DIR$/communes/src/Entity/Communes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communes/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/communes/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/communes/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/communes/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/communes/templates/communes/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/communes/templates/communes/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +33,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/communes/config/jwt" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nicol\PhpstormProjects\examen\communes\config\jwt" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -44,7 +51,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602228172706</updated>
-      <workItem from="1602228173769" duration="19548000" />
+      <workItem from="1602228173769" duration="21843000" />
     </task>
     <servers />
   </component>
