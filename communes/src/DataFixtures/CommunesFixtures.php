@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Communes;
+use App\Entity\Media;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -22,6 +23,11 @@ class CommunesFixtures extends Fixture
             $communes->setCodesPostaux($faker->numberBetween(10000,100000));
             $communes->setPopulation($faker->numberBetween(10000, 1000000));
             $manager->persist($communes);
+
+            $media = new Media();
+            $media->setLien($faker->imageUrl(640,480,'city'))
+                    ->setCommunes($communes);
+            $manager->persist($media);
         }
 
         $manager->flush();

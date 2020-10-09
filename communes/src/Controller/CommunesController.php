@@ -28,7 +28,8 @@ class CommunesController extends AbstractController
         ]);
     }
 
-    protected function serializeJson($objet){
+    protected function serializeJson($objet)
+    {
         $encoder = new JsonEncoder();
         $defaultContext = [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
@@ -40,6 +41,26 @@ class CommunesController extends AbstractController
         $jsonContent = $serializer->serialize($objet, 'json');
         return $jsonContent;
     }
+
+    /**
+     * @Route("/communes/json", name="communes_json")
+     * @param CommunesRepository $communesRepository
+     * @param Request $request
+     * @return Response
+     */
+    public function communesJson(CommunesRepository $communesRepository, Request $request)
+    {
+        $filter = [];
+        $em = $this->getDoctrine()->getManager();
+        $metadata = $em->getClassMetadata(Communes::class)->getFieldNames();
+        foreach($metadata as $value){
+            if ($request->query->get($value)){
+                $filter[$value] = $request->query->get($value);
+            }
+        }
+        return JsonResponse::fromJsonString($this->serializeJson($communesRepository->findBy($filter)));
+    }
+
 
     /**
      * @Route("/json/communes", name="json_communes", methods={"GET"})
@@ -62,18 +83,18 @@ class CommunesController extends AbstractController
     }
 
     /**
-     * @Route("json/communes/{nom}", name="communes_nom", methods={"GET"})
+     * @Route("/departement/{slug}", name="departement_slug")
      * @param Communes $communes
-     * @return JsonResponse
+     * @return Response
      */
-    public function communesNom(Communes $communes)
+    public function departement(Communes $communes)
     {
-        return JsonResponse::fromJsonString($this->serializeJson($communes));
+        return $this->render('departement/slug.html.twig', [
+            'departement' => $communes
+        ]);
     }
 
-
-
-
+    /******************************************************************************************************************/
 
     /**
      * @Route("/communes/json/create", name="communes_create", methods={"POST"})
@@ -85,11 +106,11 @@ class CommunesController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $communes = new Communes();
         $communes->setNom($request->request->get("nom", "undefined"))
-            ->setCode($request->request->get("code","undefined"))
-            ->setCodeDepartement($request->request->get("code_departement","undefined"))
-            ->setCodeRegion($request->request->get("code_region","undefined"))
-            ->setCodesPostaux($request->request->get("codes_postaux","undefined"))
-            ->setPopulation($request->request->get("population","undefined"));
+            ->setCode($request->request->get("code", "undefined"))
+            ->setCodeDepartement($request->request->get("code_departement", "undefined"))
+            ->setCodeRegion($request->request->get("code_region", "undefined"))
+            ->setCodesPostaux($request->request->get("codes_postaux", "undefined"))
+            ->setPopulation($request->request->get("population", "undefined"));
         $entityManager->persist($communes);
         $entityManager->flush();
         $response = new Response();
@@ -103,7 +124,8 @@ class CommunesController extends AbstractController
      * @param CommunesRepository $communesRepository
      * @return Response
      */
-    public function communesUpdate(Request $request, CommunesRepository $communesRepository){
+    public function communesUpdate(Request $request, CommunesRepository $communesRepository)
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $data = json_decode(
             $request->getContent(),
@@ -123,7 +145,7 @@ class CommunesController extends AbstractController
                 $response->setContent("Modification de la commune");
                 $response->setStatusCode(Response::HTTP_OK);
             }
-        }else{
+        } else {
             $response->setContent("Erreur Bad Request");
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
         }
@@ -144,24 +166,18 @@ class CommunesController extends AbstractController
             $request->getContent(),
             true
         );
-        if (isset($data["communes_id"]))
-        {
+        if (isset($data["communes_id"])) {
             $communes = $communesRepository->find($data["communes_id"]);
-            if ($communes === null)
-            {
+            if ($communes === null) {
                 $response->setContent("Cette commune n'existe pas");
                 $response->setStatusCode(Response::HTTP_BAD_REQUEST);
-            }
-            else
-            {
+            } else {
                 $entityManager->remove($communes);
                 $entityManager->flush();
                 $response->setContent("Cette commune à été delete");
                 $response->setStatusCode(Response::HTTP_OK);
             }
-        }
-        else
-        {
+        } else {
             $response->setContent("L'id n'est pas renseigné");
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
         }

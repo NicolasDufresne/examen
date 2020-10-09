@@ -20,6 +20,11 @@
                 | CodePostaux : {{ commune.codesPostaux }}
                 | Population : {{ commune.population }}
             </div> <br/>
+            <div class="col-sm">
+                {% for media in commune.medias %}
+                    <img width="100" height="100" src="{{ media.lien }}" alt="">
+                {% endfor %}
+            </div>
         </div>
 
     {% endfor %}

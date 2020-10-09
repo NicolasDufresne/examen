@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\CommunesRepository;
+use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CommunesRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Communes
 {
@@ -46,6 +50,33 @@ class Communes
      * @ORM\Column(type="integer")
      */
     private $population;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="communes", cascade={"persist","remove"})
+     */
+    private $medias;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
+
+    public function __construct()
+    {
+        $this->medias = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function modifySlug()
+    {
+        $slugify = new Slugify();
+        $this->slug = $this->getNom();
+
+        $this->slug = $slugify->slugify($this->getNom());
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +151,49 @@ class Communes
     public function setPopulation(int $population): self
     {
         $this->population = $population;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getMedias(): Collection
+    {
+        return $this->medias;
+    }
+
+    public function addMedia(Media $media): self
+    {
+        if (!$this->medias->contains($media)) {
+            $this->medias[] = $media;
+            $media->setCommunes($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedia(Media $media): self
+    {
+        if ($this->medias->contains($media)) {
+            $this->medias->removeElement($media);
+            // set the owning side to null (unless already changed)
+            if ($media->getCommunes() === $this) {
+                $media->setCommunes(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
