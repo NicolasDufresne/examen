@@ -9,12 +9,19 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% for commune in communes %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/nicol/PhpstormProjects/examen/communes/src/Controller/CommunesController.php'|file_link(0) }}">src/Controller/CommunesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/nicol/PhpstormProjects/examen/communes/templates/communes/index.html.twig'|file_link(0) }}">templates/communes/index.html.twig</a></code></li>
-    </ul>
+        <div class="row">
+            <div class="col-sm">
+                  Nom : {{ commune.nom }}
+                | Code : {{ commune.code }}
+                | CodeDepartement : {{ commune.codeDepartement }}
+                | CodeRegion : {{ commune.codeRegion }}
+                | CodePostaux : {{ commune.codesPostaux }}
+                | Population : {{ commune.population }}
+            </div> <br/>
+        </div>
+
+    {% endfor %}
 </div>
 {% endblock %}
