@@ -97,7 +97,7 @@ class CommunesController extends AbstractController
     /******************************************************************************************************************/
 
     /**
-     * @Route("/communes/json/create", name="communes_create", methods={"POST"})
+     * @Route("/api/communes/json/create", name="communes_create", methods={"POST"})
      * @param Request $request
      * @return Response
      */
@@ -119,7 +119,7 @@ class CommunesController extends AbstractController
     }
 
     /**
-     * @Route("/communes/json/update", name="communes_update", methods={"PUT"})
+     * @Route("/api/communes/json/update", name="communes_update", methods={"PUT"})
      * @param Request $request
      * @param CommunesRepository $communesRepository
      * @return Response
